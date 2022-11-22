@@ -22,8 +22,10 @@ RUN bundle install
 
 COPY . /magia_sample_app
 
-COPY entrypoint.sh /magia_sample_app/entrypoint.sh
-RUN chmod +x /magia_sample_app/entrypoint.sh
-ENTRYPOINT ["/magia_sample_app/entrypoint.sh"]
-
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]

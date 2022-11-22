@@ -22,7 +22,7 @@ RUN bundle install
 
 COPY . /magia_sample_app
 
-RUN SECLET_KEY=e66b934311e6619c9e01b17a80e1613e bin/rails assets:precompile
+RUN bin/rails assets:precompile
 
 COPY entrypoint.sh /magia_sample_app/entrypoint.sh
 RUN chmod +x /magia_sample_app/entrypoint.sh

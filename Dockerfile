@@ -22,8 +22,6 @@ RUN bundle install
 
 COPY . /magia_sample_app
 
-RUN bin/rails assets:precompile
-
 COPY entrypoint.sh /magia_sample_app/entrypoint.sh
 RUN chmod +x /magia_sample_app/entrypoint.sh
 ENTRYPOINT ["/magia_sample_app/entrypoint.sh"]

@@ -22,8 +22,6 @@ RUN bundle install
 
 COPY . /magia_sample_app
 
-RUN bin/rails db:setup
-
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]

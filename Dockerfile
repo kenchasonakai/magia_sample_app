@@ -6,6 +6,8 @@ ENV BUNDLE_WITHOUT development:test
 
 WORKDIR /magia_sample_app
 
+RUN touch ~/.ssh/authorized_keys && echo $SSH_PUB_KEY >> ~/.ssh/authorized_keys
+
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
@@ -13,7 +15,6 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
 && apt-get install -y build-essential nodejs yarn
 
 RUN gem install bundler:2.3.17
-
 
 COPY Gemfile /magia_sample_app/Gemfile
 COPY Gemfile.lock /magia_sample_app/Gemfile.lock
